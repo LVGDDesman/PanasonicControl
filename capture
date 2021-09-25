@@ -1,0 +1,281 @@
+#!/bin/bash
+
+# Capture Usage:
+# Only for manual mode, automatic doesn't support most of those requests
+# --iso 	{100,200,400,800,1600,3200,6400,12800,25600}
+# --ss 		{
+# --focal	{
+# --whiteb	{auto, daylight
+# --repeat	{times} else 1
+# --waits	{seconds}
+# --startdel{seconds}
+# --save	{folder}
+# --login	
+
+IP=192.168.54.1
+SCRIPTNAME=$(basename $0)
+SCRIPTDIR=$(dirname $0)
+
+cwd=$(pwd)
+if [ "$SCRIPTDIR" = "." ]
+then
+	SCRIPTDIR=$cwd
+else
+	cd ${SCRIPTDIR}
+	SCRIPTDIR=$(pwd)
+	cd ${cwd}
+fi
+cwd=
+unset cwd
+
+repeat=1
+waits=0
+startdel=0
+
+
+# conversions
+# those values are problably not quite perfect....
+# I guess multiples of 256 are more exact, but those values do work to.
+
+TRANSFORMSHUTTERSPEED="-1500:60,-1450:50,-1400:40,-1300:30,-1200:25,-1100:20,-1000:15,-900:13,-850:10,-800:8,-700:6,-600:5,-500:4,-400:3.2,-300:2.5,-250:2,-200:1.6,-100:1.3,1:1,100:1/1.3,200:1/1.6,250:1/2,300:1/2.5,400:1/3.2,500:1/4,600:1/5,700:1/6,800:1/8,950:1/10,900:1/13,1000:1/15,1100:1/20,1200:1/25,1300:1/30,1400:1/40,1450:1/50,1500:1/60,1600:1/80,1700:1/100,1800:1/125,1900:1/160,2000:1/200,2050:1/250,2100:1/320,2200:1/400,2300:1/500,2400:1/640,2500:1/800,2600:1/1000,2650:1/1300,2700:1/1600,2800:1/2000,2900:1/2500,3000:1/3200,4000:1/4000,"
+TRANSFORMFOCAL=",3.5:900,4.0:1000,4.5:1100,5.0:1200,5.6:1300,6.3:1400,7.1:1450,8.0:1500,9.0:1600,10:1700,11:1800,13:1900,14:2000,16:2050,18:2100,20:2200,22:2300,"
+
+## 
+## Parameters
+##
+
+while :
+do
+	option=$1
+	case "$1" in
+		-h | --help)
+			print_usage
+			exit 0
+		;;
+		--iso)	
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: iso value missing"
+				exit 1
+			fi
+			case "$1" in
+				100 | 200 | 400 | 800 | 1600 | 3200 | 6400 | 12800 | 25600)
+				;;
+				*)
+					echo "${SCRIPTNAME}: option ${option}: iso value not allowed"
+					exit 1
+				;;
+			esac
+			iso=$1
+			;;
+		--ss)	
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: shutter speed value missing"
+				exit 1
+			fi
+			if [[ $(echo $TRANSFORMSHUTTERSPEED | grep -o ":$1,") = "" ]]
+			then
+				echo "${SCRIPTNAME}: option ${option}: shutter speed value not allowed"
+				exit 1
+			fi
+
+			shutterspeed=$1
+			shutterspeedvalue=$(echo $TRANSFORMSHUTTERSPEED | grep -o -E "(-)?[0-9]*:${shutterspeed}," | grep -o -E "^(-)?[0-9]*" )
+			;;
+		--focal)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: focal length value missing"
+				exit 1
+			fi
+			if [[ $(echo $TRANSFORMFOCAL | grep -o "$1:") = "" ]]
+			then
+				echo "${SCRIPTNAME}: option ${option}: focal length value not allowed"
+				exit 1
+			fi
+
+			focallength=$1
+			focallengthvalue=$(echo $TRANSFORMFOCAL | grep -o -E ",${focallength}:(-)?[0-9]*" | grep -o -E "(-)?[0-9]*$" )
+			;;
+		--whiteb)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: whitebalance value missing"
+				exit 1
+			fi
+			case "$1" in
+				auto | daylight) # and many more i guess
+				;;
+				*)
+					echo "${SCRIPTNAME}: option ${option}: whitebalance value not allowed"
+					exit 1
+				;;
+			esac
+			whitebalance=$1
+			;;
+		--repeat)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: repeat value missing"
+				exit 1
+			fi
+			if [[ ! "$1" =~ ^[0-9]*$ ]]
+			then 
+				echo "${SCRIPTNAME}: option ${option}: repeat value not allowed"
+				exit 1
+			fi
+			repeat=$1
+			;;
+		--waits)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: waiting time value missing"
+				exit 1
+			fi
+			if [[ ! "$1" =~ ^[0-9]*(\.[0-9]+)?$ ]]
+			then 
+				echo "${SCRIPTNAME}: option ${option}: waiting time value not allowed"
+				exit 1
+			fi
+			waits=$1
+			;;
+		--startdel)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: starting delay value missing"
+				exit 1
+			fi
+			if [[ ! "$1" =~ ^[0-9]*(\.[0-9]+)?$ ]]
+			then 
+				echo "${SCRIPTNAME}: option ${option}: starting delay value not allowed"
+				exit 1
+			fi
+			startdel=$1
+			;;
+		--save)
+			shift 1
+			if [ "$1" = "" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}: save destination missing"
+				exit 1
+			fi
+			if [ ! -d "$1" ]
+			then
+				echo "${SCRIPTNAME}: option ${option}, ${1}: folder does not exist"
+				exit 1
+			fi
+			savefolder=$1
+			;;
+		--login)
+			login="true"
+			;;
+		-* | --*)
+			echo "${SCRIPTNAME}: option ${option}: option not valid"
+			exit 1
+			;;
+		*)
+			break;;
+	esac
+	shift 1
+done
+
+##
+## Setup:
+## Login, adjust focallength, iso, shutterspeed, whitebalance
+##
+
+if [[ ${login} = "true" ]]
+then
+	bash "${SCRIPTDIR}/login" >/dev/null
+	exitcode=$?
+	if [[ $exitcode != 0 ]]
+	then
+		echo "${SCRIPTNAME}: operation login: login failed"
+		exit $exitcode
+	fi
+	# wait some seconds, since there is a mistake somewhere and the camera waits on something
+	sleep 15
+fi
+
+if [ -n "$shutterspeed" ]
+then
+	exitcode=$(curl -s "${IP}/cam.cgi?mode=setsetting&type=shtrspeed&value=${shutterspeedvalue}/256")
+	if [[ $(echo $exitcode | grep "ok" ) = "" ]]
+	then
+		echo "${SCRIPTNAME}: operation set shutterspeed: could not set value"
+		exit 1
+	fi
+fi
+
+if [ -n "$focallength" ]
+then
+	exitcode=$(curl -s "${IP}/cam.cgi?mode=setsetting&type=focal&value=${focallengthvalue}/256")
+	
+	if [[ $(echo $exitcode | grep "ok" ) = "" ]]
+	then
+		echo "${SCRIPTNAME}: operation set focallength: could not set value"
+		exit 1
+	fi
+fi
+
+if [ -n "$whitebalance" ]
+then
+	exitcode=$(curl -s "${IP}/cam.cgi?mode=setsetting&type=whitebalance&value=${whitebalance}")
+	
+	if [[ $(echo $exitcode | grep "ok" ) = "" ]]
+	then   
+		echo "${SCRIPTNAME}: operation set whitebalance: could not set value"
+		exit 1
+	fi
+fi
+
+if [ -n "$iso" ]
+then
+	exitcode=$(curl -s "${IP}/cam.cgi?mode=setsetting&type=iso&value=${iso}")
+	
+	if [[ $(echo $exitcode | grep "ok" ) = "" ]]
+	then
+		echo "${SCRIPTNAME}: operation set iso: could not set value"
+		exit 1
+	fi
+fi
+
+##
+## Make pictures
+##
+sleep $startdel
+currpictures=0
+echo "starting the capturing of ($repeat) photos" 
+for count in $(seq $repeat)
+do
+	echo $count
+	exitcode=$(curl -s "${IP}/cam.cgi?mode=camcmd&value=capture")
+	
+	time=$(echo "scale = 5; 0.5 + ${shutterspeed}" | bc)
+	sleep $time
+	if [[ $(echo $exitcode | grep "ok" ) = "" ]]
+	then
+		echo "${SCRIPTNAME}: operation capture image: Capturing image ${count} failed"
+		break
+	else
+		currpictures=$count
+	fi
+	sleep $waits
+done
+
+##
+## save
+##
+
+
+#currpictures
+#$savefolder
+#$repeat

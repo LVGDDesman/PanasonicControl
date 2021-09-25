@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## Save a picture
+PICTURE="P1000077.JPG"
+#"D01020394.jpg"
+#"P1000077.JPG"
+#"P1000496.JPG"
+
+curl -X "GET" -H "User-Agent: Apache-HttpClient"\
+	 -H "Host: 192.168.54.1:50001"\
+	 -H "Connection: Keep-Alive"\
+	 -H "Accept-Encoding: gzip"\
+	 "192.168.54.1:50001/$PICTURE" # > "pictures/$PICTURE"

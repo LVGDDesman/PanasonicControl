@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+ <s:Body>
+  <u:Browse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1" xmlns:pana="urn:schemas-panasonic-com:pana">
+   <ObjectID>0</ObjectID>
+   <BrowseFlag>BrowseDirectChildren</BrowseFlag>
+   <Filter>*</Filter>
+   <StartingIndex>1</StartingIndex>
+   <RequestedCount>15</RequestedCount>
+   <SortCriteria></SortCriteria>
+   <pana:X_FromCP>LumixLink2.0</pana:X_FromCP>
+   <pana:X_RecGroupType></pana:X_RecGroupType>
+   <pana:X_Filter>type=date,value=relative,value2=0</pana:X_Filter>
+   <pana:X_Order>type=date,value=descend</pana:X_Order>
+  </u:Browse>
+ </s:Body>
+</s:Envelope>
+

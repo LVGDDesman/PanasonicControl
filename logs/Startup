@@ -1,0 +1,15 @@
+SUBSCRIBE /Server0/CMS_event HTTP/1.1
+Host: 192.168.54.1:60606
+User-Agent: Panasonic Android/1 DM-CP
+CALLBACK: <http://192.168.54.10:49153/Camera/event>
+NT: upnp:event
+TIMEOUT: Second-300
+
+HTTP/1.1 200 OK
+CONTENT-LENGTH: 0
+DATE: Mon, 13 Feb 2012 14:26:50 GMT
+SERVER: Linux/4.0 UPnP/1.0 Panasonic-UPnP-MW/1.0
+SID: uuid:4D454931-0000-1000-8000-1848CA69497D
+TIMEOUT: Second-300
+CONNECTION: close
+

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<camrply>
+<result>ok</result>
+<menuinfo model="G81" version="2.0" >
+<mainmenu>
+<item id="menu_item_id_liveview_quality" enable="yes" value="vga" />
+<item id="menu_item_id_liveviewsize_vga" enable="yes" />
+<item id="menu_item_id_liveviewsize_qvga" enable="yes" />
+</mainmenu>
+<photosettings>
+<item id="menu_item_id_crtv_ctrl" enable="no" />
+<item id="menu_item_id_filter_set" enable="no" />
+<item id="menu_item_id_scn_gid" enable="no" value="backlight_strobe" />
+<item id="menu_item_id_afmode" enable="no" value="facedetection" />
+<item id="menu_item_id_ph_sty" enable="yes" value="standard" />
+<item id="menu_item_id_ph_sty_standard" enable="yes" option="no_detail" />
+<item id="menu_item_id_ph_sty_vivid" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_natural" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_bw" enable="yes" option="no_detail" />
+<item id="menu_item_id_ph_sty_l_bw" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_scenery" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_portrait" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_cinelike_d" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_cinelike_v" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_vlog_l" enable="no" option="no_detail" />
+<item id="menu_item_id_ph_sty_custom" enable="no" option="no_detail" />
+<item id="menu_item_id_flash" enable="no" value="auto" />
+<item id="menu_item_id_asprat" enable="yes" value="4:3" />
+<item id="menu_item_id_asprat_4:3" enable="yes" />
+<item id="menu_item_id_asprat_3:2" enable="yes" />
+<item id="menu_item_id_asprat_16:9" enable="yes" />
+<item id="menu_item_id_asprat_1:1" enable="yes" />
+<item id="menu_item_id_pctsiz" enable="yes" value="16m" />
+<item id="menu_item_id_pctsiz_24m" enable="no" />
+<item id="menu_item_id_pctsiz_20m" enable="no" />
+<item id="menu_item_id_pctsiz_18m" enable="no" />
+<item id="menu_item_id_pctsiz_17.5m" enable="no" />
+<item id="menu_item_id_pctsiz_17m" enable="no" />
+<item id="menu_item_id_pctsiz_16m" enable="yes" />
+<item id="menu_item_id_pctsiz_ex16m" enable="no" />
+<item id="menu_item_id_pctsiz_14.5m" enable="no" />
+<item id="menu_item_id_pctsiz_14m" enable="no" />
+<item id="menu_item_id_pctsiz_ex14m" enable="no" />
+<item id="menu_item_id_pctsiz_13.5m" enable="no" />
+<item id="menu_item_id_pctsiz_13m" enable="no" />
+<item id="menu_item_id_pctsiz_12.5m" enable="no" />
+<item id="menu_item_id_pctsiz_12m" enable="no" />
+<item id="menu_item_id_pctsiz_ex12m" enable="no" />
+<item id="menu_item_id_pctsiz_11.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex11.5m" enable="no" />
+<item id="menu_item_id_pctsiz_11m" enable="no" />
+<item id="menu_item_id_pctsiz_10.5m" enable="no" />
+<item id="menu_item_id_pctsiz_10m" enable="no" />
+<item id="menu_item_id_pctsiz_ex10m" enable="no" />
+<item id="menu_item_id_pctsiz_9m" enable="no" />
+<item id="menu_item_id_pctsiz_ex9m" enable="no" />
+<item id="menu_item_id_pctsiz_8m" enable="no" />
+<item id="menu_item_id_pctsiz_ex8m" enable="yes" />
+<item id="menu_item_id_pctsiz_7.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex7.5m" enable="no" />
+<item id="menu_item_id_pctsiz_7m" enable="no" />
+<item id="menu_item_id_pctsiz_ex7m" enable="no" />
+<item id="menu_item_id_pctsiz_6.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex6.5m" enable="no" />
+<item id="menu_item_id_pctsiz_6m" enable="no" />
+<item id="menu_item_id_pctsiz_ex6m" enable="no" />
+<item id="menu_item_id_pctsiz_5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex5m" enable="no" />
+<item id="menu_item_id_pctsiz_4.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex4.5m" enable="no" />
+<item id="menu_item_id_pctsiz_4m" enable="no" />
+<item id="menu_item_id_pctsiz_ex4m" enable="yes" />
+<item id="menu_item_id_pctsiz_3.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex3.5m" enable="no" />
+<item id="menu_item_id_pctsiz_3m" enable="no" />
+<item id="menu_item_id_pctsiz_ex3m" enable="no" />
+<item id="menu_item_id_pctsiz_2.5m" enable="no" />
+<item id="menu_item_id_pctsiz_ex2.5m" enable="no" />
+<item id="menu_item_id_pctsiz_2m" enable="no" />
+<item id="menu_item_id_pctsiz_ex2m" enable="no" />
+<item id="menu_item_id_pctsiz_1.7m" enable="no" />
+<item id="menu_item_id_quality" enable="yes" value="fine" />
+<item id="menu_item_id_quality_fine" enable="yes" />
+<item id="menu_item_id_quality_standard" enable="yes" />
+<item id="menu_item_id_quality_raw_fine" enable="yes" />
+<item id="menu_item_id_quality_raw_standard" enable="yes" />
+<item id="menu_item_id_quality_raw" enable="yes" />
+<item id="menu_item_id_quality_mpo_fine" enable="no" />
+<item id="menu_item_id_quality_mpo_standard" enable="no" />
+<item id="menu_item_id_focusmode" enable="no" value="afs" />
+<item id="menu_item_id_focusmode2" enable="no" value="afs" />
+<item id="menu_item_id_lightmet" enable="no" value="multi" />
+<item id="menu_item_id_macro" enable="no" value="off" />
+<item id="menu_item_id_4kphoto_looprec" enable="no" value="off" />
+<item id="menu_item_id_videoformat" enable="no" value="mp4" />
+<item id="menu_item_id_v_quality" enable="yes" value="mp4_50p_28mbps" />
+<item id="menu_item_id_v_quality_avchd_60p_28mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_50p_28mbps" enable="yes" />
+<item id="menu_item_id_v_quality_avchd_60i_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_50i_24mbps" enable="yes" />
+<item id="menu_item_id_v_quality_avchd_60i_17mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_50i_17mbps" enable="yes" />
+<item id="menu_item_id_v_quality_avchd_30p_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_25p_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_c24p_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_24p_24mbps" enable="yes" />
+<item id="menu_item_id_v_quality_avchd_60p_17mbps" enable="no" />
+<item id="menu_item_id_v_quality_avchd_50p_17mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4_30p_100mbps_4k" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_25p_100mbps_4k" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_24p_100mbps_4k" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_30p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4_25p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4_24p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4_60p_28mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_50p_28mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_30p_20mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_25p_20mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_24p_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4_30p_10mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_25p_10mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4_30p_4mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4_25p_4mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_100mbps_c4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_24p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_30p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_25p_100mbps_4k" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_24p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_30p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_25p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_60p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_50p_200mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_60p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_50p_100mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_60p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_50p_50mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_30p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_25p_200mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_30p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_25p_100mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_30p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_25p_50mbps" enable="yes" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_24p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_24p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_c24p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mp4ed_24p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_100mbps_c4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_100mbps_4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_100mbps_a4k" enable="no" />
+<item id="menu_item_id_v_quality_mov_60p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_50p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_60p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_50p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_60p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_50p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_72mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_72mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_30p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_25p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_200mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_100mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_72mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_c24p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_50mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_24p_24mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_60p_72mbps" enable="no" />
+<item id="menu_item_id_v_quality_mov_50p_72mbps" enable="no" />
+<item id="menu_item_id_4kcrop" enable="no" value="off" />
+<item id="menu_item_id_focus_select" enable="no" value="off" />
+<item id="menu_item_id_focus_action" enable="no" value="mode1" />
+<item id="menu_item_id_stp_mtn_anm" enable="no" />
+<item id="menu_item_id_bracket" enable="yes" />
+<item id="menu_item_id_bracket_type" enable="yes" value="off" />
+<item id="menu_item_id_bracket_exposure" enable="yes" />
+<item id="menu_item_id_bracket_focal" enable="no" />
+<item id="menu_item_id_bracket_focus" enable="yes" />
+<item id="menu_item_id_bracket_wb" enable="no" />
+<item id="menu_item_id_bracket_off" enable="yes" />
+<item id="menu_item_id_bracket_exposure_step" enable="no" value="3shot_1/3ev" />
+<item id="menu_item_id_bracket_exposure_sequence" enable="no" value="center" />
+<item id="menu_item_id_bracket_exposure_shoot_type" enable="no" value="burst" />
+<item id="menu_item_id_bracket_focal_shoot_num" enable="no" value="3" />
+<item id="menu_item_id_bracket_focus_step" enable="no" value="8" />
+<item id="menu_item_id_bracket_focus_shoot_num" enable="no" value="11" />
+<item id="menu_item_id_bracket_focus_sequence" enable="no" value="center" />
+</photosettings>
+<qmenu2>
+<item id="menu_item_id_f_and_ss" enable="yes" active="no" />
+<item id="menu_item_id_shutter_speed" enable="no" />
+<item id="menu_item_id_aperture" enable="no" />
+<item id="menu_item_id_program_shift" enable="no" />
+<item id="menu_item_id_ss" enable="no" />
+<item id="menu_item_id_f" enable="no" />
+<item id="menu_item_id_f_and_ss_angle" enable="no" />
+<item id="menu_item_id_ss_angle" enable="no" />
+<item id="menu_item_id_f_and_ss_sync" enable="no" />
+<item id="menu_item_id_ss_sync" enable="no" />
+<item id="menu_item_id_f_and_ss_angle_sync" enable="no" />
+<item id="menu_item_id_ss_angle_sync" enable="no" />
+<item id="menu_item_id_exposure3" enable="yes" value="0" />
+<item id="menu_item_id_exposure_m5" enable="yes" />
+<item id="menu_item_id_exposure_m14_3" enable="yes" />
+<item id="menu_item_id_exposure_m13_3" enable="yes" />
+<item id="menu_item_id_exposure_m4" enable="yes" />
+<item id="menu_item_id_exposure_m11_3" enable="yes" />
+<item id="menu_item_id_exposure_m10_3" enable="yes" />
+<item id="menu_item_id_exposure_m3" enable="yes" />
+<item id="menu_item_id_exposure_m8_3" enable="yes" />
+<item id="menu_item_id_exposure_m7_3" enable="yes" />
+<item id="menu_item_id_exposure_m2" enable="yes" />
+<item id="menu_item_id_exposure_m5_3" enable="yes" />
+<item id="menu_item_id_exposure_m4_3" enable="yes" />
+<item id="menu_item_id_exposure_m1" enable="yes" />
+<item id="menu_item_id_exposure_m2_3" enable="yes" />
+<item id="menu_item_id_exposure_m1_3" enable="yes" />
+<item id="menu_item_id_exposure_0" enable="yes" />
+<item id="menu_item_id_exposure_p1_3" enable="yes" />
+<item id="menu_item_id_exposure_p2_3" enable="yes" />
+<item id="menu_item_id_exposure_p1" enable="yes" />
+<item id="menu_item_id_exposure_p4_3" enable="yes" />
+<item id="menu_item_id_exposure_p5_3" enable="yes" />
+<item id="menu_item_id_exposure_p2" enable="yes" />
+<item id="menu_item_id_exposure_p7_3" enable="yes" />
+<item id="menu_item_id_exposure_p8_3" enable="yes" />
+<item id="menu_item_id_exposure_p3" enable="yes" />
+<item id="menu_item_id_exposure_p10_3" enable="yes" />
+<item id="menu_item_id_exposure_p11_3" enable="yes" />
+<item id="menu_item_id_exposure_p12_3" enable="yes" />
+<item id="menu_item_id_exposure_p13_3" enable="yes" />
+<item id="menu_item_id_exposure_p14_3" enable="yes" />
+<item id="menu_item_id_exposure_p15_3" enable="yes" />
+<item id="menu_item_id_exposure3_step" enable="yes" value="off" />
+<item id="menu_item_id_exposure3_step_off" enable="yes" />
+<item id="menu_item_id_exposure3_step_3shot_1/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_3shot_2/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_3shot_1ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_5shot_1/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_5shot_2/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_5shot_1ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_7shot_1/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_7shot_2/3ev" enable="yes" />
+<item id="menu_item_id_exposure3_step_7shot_1ev" enable="yes" />
+<item id="menu_item_id_sensitivity" enable="no" value="i_iso" />
+<item id="menu_item_id_sensitivity_db" enable="no" value="0" />
+<item id="menu_item_id_whitebalance" enable="no" value="auto" />
+<item id="menu_item_id_1shoot" enable="yes" active="no" />
+<item id="menu_item_id_burst" enable="no" />
+<item id="menu_item_id_autobracket" enable="no" />
+<item id="menu_item_id_aspectbracket" enable="no" />
+<item id="menu_item_id_selftimer" enable="no" />
+<item id="menu_item_id_stopmotion_interval" enable="no" />
+<item id="menu_item_id_panorama" enable="no" />
+<item id="menu_item_id_4kphoto" enable="no" />
+<item id="menu_item_id_focusselect" enable="no" />
+<item id="menu_item_id_peaking" enable="yes" value="low" />
+<item id="menu_item_id_peaking_off" enable="yes" />
+<item id="menu_item_id_peaking_low" enable="yes" />
+<item id="menu_item_id_peaking_high" enable="yes" />
+</qmenu2>
+</menuinfo>
+</camrply>  

@@ -1,0 +1,42 @@
+POST /Server0/CDS_control HTTP/1.1
+Host: 192.168.54.1:60606
+User-Agent: Panasonic Android/1 DM-CP
+Content-Type: text/xml; charset="utf-8"
+SOAPACTION: "urn:schemas-upnp-org:service:ContentDirectory:1#Browse"
+Content-Length: 751
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+ <s:Body>
+  <u:Browse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1" xmlns:pana="urn:schemas-panasonic-com:pana">
+   <ObjectID>0</ObjectID>
+   <BrowseFlag>BrowseDirectChildren</BrowseFlag>
+   <Filter>*</Filter>
+   <StartingIndex>0</StartingIndex>
+   <RequestedCount>15</RequestedCount>
+   <SortCriteria></SortCriteria>
+   <pana:X_FromCP>LumixLink2.0</pana:X_FromCP>
+   <pana:X_RecGroupType></pana:X_RecGroupType>
+   <pana:X_Filter>type=date,value=relative,value2=2</pana:X_Filter>
+   <pana:X_Order>type=date,value=descend</pana:X_Order>
+  </u:Browse>
+ </s:Body>
+</s:Envelope>
+HTTP/1.1 200 OK
+CONTENT-LENGTH: 5078
+CONTENT-TYPE: text/xml;charset="utf-8"
+DATE: Mon, 13 Feb 2012 14:26:50 GMT
+EXT:
+SERVER: Linux/4.0 UPnP/1.0 Panasonic-UPnP-MW/1.0
+CONNECTION: close
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <s:Body>
+    <u:BrowseResponse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+      <Result>&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot;&gt;&lt;item id=&quot;1020393&quot; parentID=&quot;0&quot; restricted=&quot;0&quot;&gt;&lt;dc:title&gt;102-0393&lt;/dc:title&gt;&lt;upnp:writeStatus&gt;WRITABLE&lt;/upnp:writeStatus&gt;&lt;upnp:class name=&quot;imageItem&quot;&gt;object.item.imageItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:application/octet-stream;PANASONIC.COM_PN=CAM_RAW&quot;&gt;http://192.168.54.1:50001/DO1020393.RAW&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_TN;DLNA.ORG_OP=01;DLNA.ORG_CI=1;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_TN&quot;&gt;http://192.168.54.1:50001/DT1020393.JPG&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_MED;DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_LRGTN&quot;&gt;http://192.168.54.1:50001/DL1020393.JPG&lt;/res&gt;&lt;/item&gt;&lt;item id=&quot;1020392&quot; parentID=&quot;0&quot; restricted=&quot;0&quot;&gt;&lt;dc:title&gt;102-0392&lt;/dc:title&gt;&lt;upnp:writeStatus&gt;WRITABLE&lt;/upnp:writeStatus&gt;&lt;upnp:class name=&quot;imageItem&quot;&gt;object.item.imageItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:application/octet-stream;PANASONIC.COM_PN=CAM_RAW&quot;&gt;http://192.168.54.1:50001/DO1020392.RAW&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_TN;DLNA.ORG_OP=01;DLNA.ORG_CI=1;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_TN&quot;&gt;http://192.168.54.1:50001/DT1020392.JPG&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_MED;DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_LRGTN&quot;&gt;http://192.168.54.1:50001/DL1020392.JPG&lt;/res&gt;&lt;/item&gt;&lt;item id=&quot;1020391&quot; parentID=&quot;0&quot; restricted=&quot;0&quot;&gt;&lt;dc:title&gt;102-0391&lt;/dc:title&gt;&lt;upnp:writeStatus&gt;WRITABLE&lt;/upnp:writeStatus&gt;&lt;upnp:class name=&quot;imageItem&quot;&gt;object.item.imageItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:application/octet-stream;PANASONIC.COM_PN=CAM_RAW&quot;&gt;http://192.168.54.1:50001/DO1020391.RAW&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_TN;DLNA.ORG_OP=01;DLNA.ORG_CI=1;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_TN&quot;&gt;http://192.168.54.1:50001/DT1020391.JPG&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_MED;DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_LRGTN&quot;&gt;http://192.168.54.1:50001/DL1020391.JPG&lt;/res&gt;&lt;/item&gt;&lt;item id=&quot;1020390&quot; parentID=&quot;0&quot; restricted=&quot;0&quot;&gt;&lt;dc:title&gt;102-0390&lt;/dc:title&gt;&lt;upnp:writeStatus&gt;WRITABLE&lt;/upnp:writeStatus&gt;&lt;upnp:class name=&quot;imageItem&quot;&gt;object.item.imageItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:application/octet-stream;PANASONIC.COM_PN=CAM_RAW&quot;&gt;http://192.168.54.1:50001/DO1020390.RAW&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_TN;DLNA.ORG_OP=01;DLNA.ORG_CI=1;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_TN&quot;&gt;http://192.168.54.1:50001/DT1020390.JPG&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_MED;DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_LRGTN&quot;&gt;http://192.168.54.1:50001/DL1020390.JPG&lt;/res&gt;&lt;/item&gt;&lt;item id=&quot;1020389&quot; parentID=&quot;0&quot; restricted=&quot;0&quot;&gt;&lt;dc:title&gt;102-0389&lt;/dc:title&gt;&lt;upnp:writeStatus&gt;WRITABLE&lt;/upnp:writeStatus&gt;&lt;upnp:class name=&quot;imageItem&quot;&gt;object.item.imageItem&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:application/octet-stream;PANASONIC.COM_PN=CAM_RAW&quot;&gt;http://192.168.54.1:50001/DO1020389.RAW&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_TN;DLNA.ORG_OP=01;DLNA.ORG_CI=1;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_TN&quot;&gt;http://192.168.54.1:50001/DT1020389.JPG&lt;/res&gt;&lt;res protocolInfo=&quot;http-get:*:image/jpeg:DLNA.ORG_PN=JPEG_MED;DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=00900000000000000000000000000000;PANASONIC.COM_PN=CAM_LRGTN&quot;&gt;http://192.168.54.1:50001/DL1020389.JPG&lt;/res&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</Result>
+      <NumberReturned>5</NumberReturned>
+      <TotalMatches>5</TotalMatches>
+      <UpdateID>1</UpdateID>
+    </u:BrowseResponse>
+  </s:Body>
+</s:Envelope>
