@@ -254,6 +254,7 @@ fi
 sleep $startdel
 currpictures=0
 echo "starting the capturing of ($repeat) photos" 
+shutterspeed=1
 for count in $(seq $repeat)
 do
 	echo $count

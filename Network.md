@@ -44,11 +44,12 @@ iptables -t nat -A POSTROUTING -j MASQUERADE
 Maybe it is waiting for another command which i haven't found yet.
 The Image App uses a similar timeframe for registration, so maybe it is necessary?
 
+
 # Pictures
 
 ## Exposure
 
-- ``curl "192.168.54.1/cam.cgi?mode=setsetting&type=exposure&$VALUE"``
+- ``curl "192.168.54.1/cam.cgi?mode=setsetting&type=exposure&value=$VALUE"``
 - | $VALUE |
 | --- |
 | ... |
@@ -166,6 +167,12 @@ The Image App uses a similar timeframe for registration, so maybe it is necessar
 
 - ``curl "192.168.54.1/cam.cgi?mode=camcmd&value=oneshot_af"``
 
+## Requesting settings
+
+- ``curl "192.168.54.1/cam.cgi?mode=getsetting&type=$VALUE"``
+- Where value is one of the types mentioned above returnes the current value (encoded)
+
+
 ## Capture Image
 
 - ``curl "192.168.54.1/cam.cgi?mode=camcmd&value=capture"``
@@ -209,11 +216,16 @@ Content-Length: 751
 - StartingIndex und RequestedCount interesting, selects the pictures
 - the three <pana:...> Elements are maybe not necessary?
 
+- Since this request (and the first for registration) are Requests send to a UPNP-Server, it is better to use a UPNP client (like gupnp (testing), or upnpy for Python)
+- I don't know how to include those <pana:...> Elements yet, since they expand the original request.
+
 ## Download picture by name
 
-- ``curl "192.168.54.1:60606/D01020394.jpg"``
+- ``curl "192.168.54.1:50001/D01020394.jpg"``
 - with this example, one could download the picture D01020394.jpg
-- it doesn't work like that yet, nothing gets downloaded, maybe another command is missing beforehand?
+- it doesn't work like that yet, nothing gets downloaded, maybe another command is missing beforehand
+
+- Downloading pictures seems to only work in combination with getting a list of pictures beforehand...
 
 # Streaming
 
@@ -221,6 +233,8 @@ Content-Length: 751
 - Data gets send from 192.168.54.1:65415 to 192.168.54.10:49152 via UDP
 - encoding / format unknown
 - ffprobe does not return anything / nothing is picked up
+- https://www.personal-view.com/talks/discussion/6703/control-your-gh3-from-a-web-browser-now-with-video-/p1
+
 
 # Unknown
 
@@ -236,3 +250,8 @@ Content-Length: 751
 - ``curl "192.168.54.1/cam.cgi?mode=camcmd&value=menu_entry"``, used for opening the menu for iso and shutterspeed in the app, probably not important?
 - ``curl "192.168.54.1/cam.cgi?mode=camcmd&value=menu_exit"``, used for closing the menu again
 - ``curl "192.168.54.1/cam.cgi?mode=getinfo&type=capability"``, returns large document, maybe interesting?
+- not camerasettings (ISO)
+
+- ``curl "192.168.54.1/cam.cgi?mode=getinfo&type=lens" 
+- Probably the current settings of the camera (NOT ISO) 
+(result: ok,2304/256,925/256,3072/256,-1536/256,0,off,140,14,on,128/1024,on,off)

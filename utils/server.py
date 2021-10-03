@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Very simple HTTP server in python for logging requests
-Usage::
-    ./server.py [<port>]
+A very simple server to emulate the camera
+Not complete
 """
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 

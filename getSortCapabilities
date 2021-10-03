@@ -5,7 +5,7 @@
 curl -v -X "POST" -H "Host: 192.168.54.1:60606"\
 	 -H "User-Agent: Panasonic Android/1 DM-CP"\
 	 -H "Content-Type: text/xml; charset=\"utf-8\""\
-	 -H "SOAPACTION: \"urn:schemas-upnp-org:service:ContentDirectory:1#Browse\""\
-	 --data-binary "@xml/getPictures2.xml"\
+	 -H "SOAPACTION: \"urn:schemas-upnp-org:service:ContentDirectory:1#GetSortCapabilities\""\
+	 --data-binary "@xml/getSortCapabilities.xml"\
 	 192.168.54.1:60606/Server0/CDS_control
 

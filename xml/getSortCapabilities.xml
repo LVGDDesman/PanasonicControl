@@ -3,12 +3,6 @@
 	s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
  <s:Body>
   <u:Browse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1" xmlns:pana="urn:schemas-panasonic-com:pana">
-   <ObjectID>0</ObjectID>
-   <BrowseFlag>BrowseDirectChildren</BrowseFlag>
-   <Filter>*</Filter>
-   <StartingIndex>1170</StartingIndex>
-   <RequestedCount>20</RequestedCount>
-   <SortCriteria></SortCriteria>
   </u:Browse>
  </s:Body>
 </s:Envelope>
