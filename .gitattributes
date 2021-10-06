@@ -1,0 +1,5 @@
+*.gml linguist-vendored
+src/tools/val3dity/** linguist-vendored
+*.xodr linguist-vendored
+*.json linguist-vendored
+src/converter/cityAsterisk/citygml-tools/** linguist-vendored

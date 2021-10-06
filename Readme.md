@@ -30,3 +30,7 @@ This is still in progress, so many changes ahead.
 Most commands are not complete.  
 A rewrite in Python is probably usefull
 Network.md has some more information about the commands sent to the camera.
+
+---
+This is our first Mockup:
+<img src="./Mockup.svg"/>
