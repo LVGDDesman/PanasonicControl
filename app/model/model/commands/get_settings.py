@@ -1,37 +1,37 @@
 #!/usr/bin/env python3
 """
-Model for getsetting requests (i.e. configuration of the camera and connection
 """
+
+# TODO Throw error in event queue (@ return False)
 
 import requests
 import xml.etree.ElementTree as ET
+from command import Command
 
-class get_settings:
+class Get_setting(Command):
     
-    def __init__(self, ip, setting_type = None):
-        self = self
-        self.ip = ip
-        self.setting_type = setting_type
- 
-    def execute():
-        requesturl = "%s/cam.cgi?mode=getsetting&value=%s" % (self.ip, self.setting_type)
+    def execute(*args):
+        if "setting_type" not in args.keys():
+            return False
+        
+        setting_type = args["setting_type"]
+
+        request_url = "%s:%d/cam.cgi?mode=getsetting&value=%s" %\
+                (self.connection.get_server_ip(), self.connection.get_http_port(), setting_type)
         answer = requests.get(requesturl)
 
         try:
-            root_node = ET.fromstring(answer.text).getroot()
-            return root_node
+            root_node = ET.fromstring(answer.text)
+
+            if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
+                return False
+            
+            if len(root.findall("settingvalue")) == 0 or setting_type not in root.findall("settingvalue")[0].attrib:
+                return False
+
+            setting_value = root.findall("settingvalue")[0].attrib[setting_type]
+            self.settings.set(setting_type, setting_value)
+            
         except Exception as e:
-            raise
-        return
-    
-    def set_ip(ip):
-        self.ip = ip
-
-    def get_ip():
-        return self.ip
-
-    def set_setting_type(setting_type):
-        self.setting_type = setting_type
-
-    def get_setting_type():
-        return self.setting_type
+            return False
+        return True
