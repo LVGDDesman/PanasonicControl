@@ -4,19 +4,22 @@
 
 import requests
 from command import Command
+from upnp_client import Upnp_client
+from connection import Connection
 
 class Registration(Command):
 
-    """
-    """
-    def execute():
+    def execute(*args) -> bool:
         
-        if not self.upnp_client.initiate_registration():
+        upnp_client = Upnp_client.instance()
+        connection = Connection.instance()
+
+        if not upnp_client.initiate_registration():
             return False
         
         requesturl = "%s:%d/cam.cgi?mode=accctrl&&type=req_acc&value=%s&value2" %\
-            (self.connection.get_server_ip(), self.connection.get_http_port,\
-                    self.connection.get_uuid(), self.connection.get_client_name())
+            (connection.get_server_ip(), connection.get_http_port,\
+                    connection.get_uuid(), connection.get_client_name())
         
         answer = requests.get(requesturl)
         

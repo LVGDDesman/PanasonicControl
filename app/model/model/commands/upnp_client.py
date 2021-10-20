@@ -23,11 +23,11 @@ class Upnp_client():
         
         return cls._instance
     
+    def initiate_registration() -> bool:
     """
     Search for the camera-device.
     Returns True/False if camera was found
     """
-    def initiate_registration():
         upnp = upnpy.UPnP()
         devices = upnp.discover()
         for device in devices:
@@ -47,11 +47,11 @@ class Upnp_client():
             return True
         return False
 
+    def get_pictures_overview(count, starting_index = 0, filter_by = None, order_by = None):
     """
     Searches for Pictures stored on the camera.
     All fitting pictures are returned in a list
     """
-    def get_pictures_overview(count, starting_index = 0, filter_by = None, order_by = None):
         answer = self.camera.ContentDirectory.Browse(
                 ObjectID=0, # not necessary right
                 BrowseFlag='BrowseDirectChildren',

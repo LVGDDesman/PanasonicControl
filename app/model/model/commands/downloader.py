@@ -5,26 +5,28 @@ Model for downloading pictures
 
 import requests
 from command import Command
+from connection import Connection
 
 class Downloader(Command):
     
-    def get_preview(count, starting_index = 0, filter_by = "", order_by = ""):
-        return self.upnp_client.get_picture_overview(count, starting_index, filter_by, order_by)
+    def execute(*args) -> bool:
 
-    """
-    """
-    def execute(*args):
         if not "picture" in args.keys() or not "folder" in args.keys():
             return False
 
-        requesturl = "%s:%d/%s" % (self.connection.get_ip(), self.connection.get_download_port(), args["picture"])
+        connection = Connection.instance()
+
+        requesturl = "%s:%d/%s" % (connection.get_ip(), connection.get_download_port(), args["picture"])
         answer = requests.get(requesturl)
         
         if answer.status_code != 200:
             return False
 
         try:
-            with open(args["file"], "wb+") as file:
+            # TODO proper os path generation necessary
+            path = args["folder"] + args["picture"]
+
+            with open(path, "wb+") as file:
                 file.write(answer.content)
         except Exception as e:
             return False

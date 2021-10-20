@@ -7,13 +7,15 @@
 import requests
 import xml.etree.ElementTree as ET
 from command import Command
+from connection import Connection
 
 class Capture(Command):
     
-    def execute(*args):
-        
+    def execute(*args) -> bool:
+        connection = Connection.instance()
+
         request_url = "%s:%d/cam.cgi?mode=camcmd&value=capture" %\
-                (self.connection.get_server_ip(), self.connection.get_http_port())
+                (connection.get_server_ip(), connection.get_http_port())
         answer = requests.get(requesturl)
 
         try:

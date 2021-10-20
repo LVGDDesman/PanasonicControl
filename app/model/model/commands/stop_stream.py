@@ -5,12 +5,16 @@
 import requests
 import xml.etree.ElementTree as ET
 from command import Command
+from connection import Connection
 
 class Stop_stream(Command):
 
-    def execute():
+    def execute(*args) -> bool:
+
+        connection = Connection.instance()
+
         requesturl = "%s:%d/cam.cgi?mode=stopstream" %\
-            (self.connection.get_server_ip(), self.connection.get_http_port())
+            (connection.get_server_ip(), connection.get_http_port())
         answer = requests.get(requesturl)
 
         try:

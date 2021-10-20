@@ -42,11 +42,11 @@ class Connection():
             cls.client_name = client_name
         return cls._instance
 
+    def initialize_g81_dmc():
     '''
     Initialize object for the camera G81 DMC
     -> a more general approach is useful
     '''
-    def initialize_g81_dmc():
         client_ip = "192.168.54.1"
         server_ip = "192.168.54.10"
         upnp_port = 60606

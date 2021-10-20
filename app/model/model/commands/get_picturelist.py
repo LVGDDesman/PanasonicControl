@@ -5,10 +5,11 @@ Model for downloading pictures
 
 import xml.etree.ElementTree as ET
 from command import Command
+from upnp_client import Upnp_client
 
 class Get_picture_list(Command):
     
-    def execute(*args):
+    def execute(*args) -> bool:
         
         if not "count" in args.keys():
             return False
@@ -28,8 +29,9 @@ class Get_picture_list(Command):
             order_by = args["order_by"]
         else:
             order_by = ""
-
-        answer = self.upnp_client.get_picture_overview(count, starting_index, filter_by, order_by)
+        
+        upnp_client = Upnp_client.instance()
+        answer = upnp_client.get_picture_overview(count, starting_index, filter_by, order_by)
         
         # create list from data
         
