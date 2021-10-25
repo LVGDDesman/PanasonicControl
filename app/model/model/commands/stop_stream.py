@@ -4,16 +4,17 @@
 
 import requests
 import xml.etree.ElementTree as ET
-from command import Command
-from connection import Connection
+from model.commands.command import Command
+from model.commands.connection import Connection
 
 class Stop_stream(Command):
-
+    
+    @staticmethod
     def execute(*args) -> bool:
 
         connection = Connection.instance()
 
-        requesturl = "%s:%d/cam.cgi?mode=stopstream" %\
+        requesturl = "http://%s:%d/cam.cgi?mode=stopstream" %\
             (connection.get_server_ip(), connection.get_http_port())
         answer = requests.get(requesturl)
 

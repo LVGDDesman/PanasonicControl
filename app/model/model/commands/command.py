@@ -8,5 +8,6 @@ class Command():
     def __init__(self):
         self = self
 
+    @staticmethod
     def execute(*args) -> bool:
-        pass
+        return False

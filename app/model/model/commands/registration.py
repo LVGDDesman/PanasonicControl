@@ -3,12 +3,13 @@
 """
 
 import requests
-from command import Command
-from upnp_client import Upnp_client
-from connection import Connection
+from model.commands.command import Command
+from model.commands.upnp_client import Upnp_client
+from model.commands.connection import Connection
 
 class Registration(Command):
-
+    
+    @staticmethod
     def execute(*args) -> bool:
         
         upnp_client = Upnp_client.instance()

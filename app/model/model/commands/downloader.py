@@ -4,19 +4,19 @@ Model for downloading pictures
 """
 
 import requests
-from command import Command
-from connection import Connection
+from model.commands.command import Command
+from model.commands.connection import Connection
 
 class Downloader(Command):
     
-    def execute(*args) -> bool:
-
-        if not "picture" in args.keys() or not "folder" in args.keys():
+    @staticmethod
+    def execute(*args, **kwargs) -> bool:
+        if not "picture" in kwargs.keys() or not "folder" in kwargs.keys():
             return False
 
         connection = Connection.instance()
 
-        requesturl = "%s:%d/%s" % (connection.get_ip(), connection.get_download_port(), args["picture"])
+        requesturl = "http://%s:%d/%s" % (connection.get_server_ip(), connection.get_download_port(), kwargs["picture"])
         answer = requests.get(requesturl)
         
         if answer.status_code != 200:
@@ -24,7 +24,7 @@ class Downloader(Command):
 
         try:
             # TODO proper os path generation necessary
-            path = args["folder"] + args["picture"]
+            path = kwargs["folder"] + kwargs["picture"]
 
             with open(path, "wb+") as file:
                 file.write(answer.content)

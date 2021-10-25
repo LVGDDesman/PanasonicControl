@@ -4,29 +4,30 @@ Model for downloading pictures
 """
 
 import xml.etree.ElementTree as ET
-from command import Command
-from upnp_client import Upnp_client
+from model.commands.command import Command
+from model.commands.upnp_client import Upnp_client
 
 class Get_picture_list(Command):
     
-    def execute(*args) -> bool:
+    @staticmethod
+    def execute(*args, **kwargs) -> bool:
         
-        if not "count" in args.keys():
+        if not "count" in kwargs.keys():
             return False
-        count = args["count"]
+        count = kwargs["count"]
         
-        if "starting_index" in args.keys():
-            starting_index = args["starting_index"]
+        if "starting_index" in kwargs.keys():
+            starting_index = kwargs["starting_index"]
         else:
             starting_index = 0
         
-        if "filter_by" in args.keys():
-            filter_by = args["filter_by"]
+        if "filter_by" in kwargs.keys():
+            filter_by = kwargs["filter_by"]
         else:
             filter_by = ""
 
-        if "order_by" in args.keys():
-            order_by = args["order_by"]
+        if "order_by" in kwargs.keys():
+            order_by = kwargs["order_by"]
         else:
             order_by = ""
         
