@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""
-"""
 
 import requests
 import xml.etree.ElementTree as ET
@@ -8,9 +6,15 @@ from model.commands.command import Command
 from model.commands.connection import Connection
 
 class Start_stream(Command):
-    
+    """
+    Object, that represents the start-stream request
+    """
     @staticmethod
     def execute(*args) -> bool:
+        """
+        Execute the start-strean request
+        :return: True, if successful, False otherwise
+        """
         connection = Connection.instance()
 
         request_url = "http://%s:%d/cam.cgi?mode=startstream&value=%s" %\

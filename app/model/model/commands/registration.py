@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""
-"""
 
 import requests
 from model.commands.command import Command
@@ -8,9 +6,18 @@ from model.commands.upnp_client import Upnp_client
 from model.commands.connection import Connection
 
 class Registration(Command):
-    
+    """
+    Object for registering the client on the camera
+    """
     @staticmethod
     def execute(*args) -> bool:
+        """
+        Executing the registration.
+        -> initialisation via upnp
+        -> registering to cam.cgi
+        :param: None
+        :return: True, if successful, False otherwise
+        """
         
         upnp_client = Upnp_client.instance()
         connection = Connection.instance()

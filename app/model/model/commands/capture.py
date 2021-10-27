@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""
-"""
 
 # TODO Throw error in event queue (@ return False)
 
@@ -10,9 +8,16 @@ from model.commands.command import Command
 from model.commands.connection import Connection
 
 class Capture(Command):
-    
+    """
+    Object that represents the capture-request.
+    """
     @staticmethod
     def execute(*args) -> bool:
+        """
+        Execute the capture request
+        :param: None
+        :return: True, if successful, False otherwise
+        """
         connection = Connection.instance()
 
         request_url = "http://%s:%d/cam.cgi?mode=camcmd&value=capture" %\

@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""
-"""
 
 import requests
 import xml.etree.ElementTree as ET
@@ -10,9 +8,17 @@ from model.commands.connection import Connection
 
 
 class Get_setting(Command):
-    
+    """
+    Object for the getsetting request
+    """
     @staticmethod
     def execute(*args, **kwargs) -> bool:
+        """
+        Execute the getsetting request
+        :param setting_type: the requested information
+        :return: True, if successful, False otherwise. The data is stored in the settings object
+        """
+
         if "setting_type" not in kwargs.keys():
             return False
         

@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-"""
-"""
 
 import requests
 import xml.etree.ElementTree as ET
@@ -8,10 +6,15 @@ from model.commands.command import Command
 from model.commands.connection import Connection
 
 class Stop_stream(Command):
-    
+    """
+    Object that represents the stop-stream request
+    """
     @staticmethod
     def execute(*args) -> bool:
-
+        """
+        Execute the stop-stream request
+        :return: True, if successful, False otherwise
+        """
         connection = Connection.instance()
 
         requesturl = "http://%s:%d/cam.cgi?mode=stopstream" %\

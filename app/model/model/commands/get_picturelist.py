@@ -1,17 +1,23 @@
 #!/usr/bin/env python3
-"""
-Model for downloading pictures
-"""
 
 import xml.etree.ElementTree as ET
 from model.commands.command import Command
 from model.commands.upnp_client import Upnp_client
 
 class Get_picture_list(Command):
-    
+    """
+    Object for retrieving a picturelist from the camera
+    """
     @staticmethod
     def execute(*args, **kwargs) -> bool:
-        
+        """
+        Execute the upnp request to search pictures stored on the camera.
+        :param count: any number, count of picturenames returned
+        :param starting_index: <optional> number, where to start searching for pictures
+        :param filter_by: <optional> filter the pictures by [ TODO ] 
+        :param order_by: <optional> order the result by [TODO] 
+        :return: True, if successful, False otherwise; the picturelist is passed on via events (TODO)
+        """
         if not "count" in kwargs.keys():
             return False
         count = kwargs["count"]

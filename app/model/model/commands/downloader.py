@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""
-Model for downloading pictures
-"""
 
 import requests
 from model.commands.command import Command
 from model.commands.connection import Connection
 
 class Downloader(Command):
-    
+    """
+    Object for downloading pictures
+    """
     @staticmethod
     def execute(*args, **kwargs) -> bool:
+        """
+        Execute the download request 
+        :param picture: name of picture to download 
+        :param folder: local folder to save picture to (using the same name)
+        :return: True, if successful, False otherwise
+        """
         if not "picture" in kwargs.keys() or not "folder" in kwargs.keys():
             return False
 

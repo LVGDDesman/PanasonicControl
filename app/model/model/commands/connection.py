@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""
-Storage for all connection information
-Singleton
-Maybe store Information for each camera in a Database? -> Shouldn't change anyway...
-"""
 
 class Connection():
+    """
+    Storage for all connection information
+    Singleton
+    """
 
     _instance = None
 

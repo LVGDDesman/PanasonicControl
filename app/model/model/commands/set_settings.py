@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""
-Model for retrieval and adjustment of the cameraconfiguration and connection
-"""
-
-# TODO Throw error in event queue (@ return False)
 
 import requests
 import xml.etree.ElementTree as ET
@@ -11,9 +6,18 @@ from model.commands.command import Command
 from model.commands.connection import Connection
 
 class Set_setting(Command):
-    
+    """
+    Object, that represents the setsetting-request
+    """
     @staticmethod
     def execute(*args, **kwargs) -> bool:
+        """
+        Execute the setsetting-request
+        :param setting_type: name of setting, that is to be updated
+        :param setting_value: new value of setting
+        :return: True, if successful, False otherwise
+        """
+
         if "setting_type" not in kwargs.keys() or "setting_value" not in kwargs.keys() :
             return False
 

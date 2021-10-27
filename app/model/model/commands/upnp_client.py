@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
-"""
-Model for upnp requests (i.e. Login, Media)
-Singleton
-"""
 
 from model.commands.connection import Connection
 import upnpy
 
 class Upnp_client():
-    
+    """
+    Object for upnp requests (i.e. Login, Mediacontrol)
+    Singleton
+    """
     _instance = None
     connection = None
     camera = None
 
     def __init__(self):
+        """
+        __init__ is not allowed
+        """
         raise RuntimeError('Call instance() instead')
 
     @classmethod
     def instance(cls):
+        """
+        return (new) instance of this object
+        :return: instance of Upnp_client
+        """
         if cls._instance is None:
             cls._instance = cls.__new__(cls)
             cls.connection = Connection.instance()
@@ -27,7 +33,8 @@ class Upnp_client():
     def initiate_registration(self) -> bool:
         """
         Search for the camera-device.
-        Returns True/False if camera was found
+        This function *has* to be called before other requests are send to the camera
+        :return: True/False if camera was found
         """
         upnp = upnpy.UPnP()
         devices = upnp.discover()
@@ -50,9 +57,14 @@ class Upnp_client():
 
     def get_picture_overview(self, count, starting_index = 0, filter_by = None, order_by = None):
         """
-        Searches for Pictures stored on the camera.
-        All fitting pictures are returned in a list
+        Execute the upnp request to search pictures stored on the camera.
+        :param count: any number, count of picturenames returned
+        :param starting_index: <optional> number, where to start searching for pictures
+        :param filter_by: <optional> filter the pictures by [ TODO ]
+        :param order_by: <optional> order the result by [TODO]
+        :return: True, if successful, False otherwise; the picturelist is passed on via events (TODO)
         """
+
         answer = self.camera.ContentDirectory.Browse(
                 ObjectID=0, # not necessary right
                 BrowseFlag='BrowseDirectChildren',
@@ -65,7 +77,15 @@ class Upnp_client():
         return answer
     
     def get_camera(self):
+        """
+        get upnp object of camera 
+        :return: upnp object of camera
+        """
         return self.get_camera
 
     def set_camera(self,camera):
+        """
+        set camera object
+        :param camera: upnp camera object
+        """
         self.camera = camera
