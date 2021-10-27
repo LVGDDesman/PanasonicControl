@@ -1,17 +1,18 @@
 from tkinter import *
-import utils.table
-from window_test import Window
+import view.utils.table
+from view.window.controller import Window
+from view.window.controller.MainWindow import MainWindow
 
 class Registration_window(Window):
     
     def __init__(self, width, height):
-        Window.__init__(self, "Registrating to Camera", width, height)
+        super().__init__("Camera Login", width, height)
 
     def initialize_login(self):
-        root = Window.create_window(self)
-        Window.create_status_bar(self, root)
+        root = MainWindow().create_window()
+        MainWindow().create_status_bar(root)
 
-        main_frame = Frame(root, width = self.width, height = self.height)
+        main_frame = Frame(root, width = self._width, height = self._height)
         
         login_text = "Login to Camera" 
         login_label = Label(main_frame, text = login_text, justify=LEFT)
@@ -20,7 +21,7 @@ class Registration_window(Window):
         information_label = Label(main_frame)
         information = [("IP-adress", "XX.XX.XX.XX"),("Client-Name", "XXXXX")]
 
-        utils.table.create_table(information_label, information)
+        view.utils.table.create_table(information_label, information)
         information_label.pack()
 
         login_label1 = Label(main_frame, text = "Make sure to connect to the camera network first!", fg= "red")
@@ -31,5 +32,4 @@ class Registration_window(Window):
         root.mainloop()
         return root
 
-a = Registration_window(1920, 1080)
-a.initialize_login()
+

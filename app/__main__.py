@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import window.appStarter as starter
+import view.window.appStarter as starter
 """
 The module to start the whole application
 """
