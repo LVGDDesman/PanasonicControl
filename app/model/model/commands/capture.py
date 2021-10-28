@@ -15,7 +15,6 @@ class Capture(Command):
     def execute(*args) -> bool:
         """
         Execute the capture request
-        :param: None
         :return: True, if successful, False otherwise
         """
         connection = Connection.instance()
