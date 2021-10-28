@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import xml.etree.ElementTree as ET
-from model.commands.command import Command
-from model.commands.upnp_client import Upnp_client
+from .command import Command
+from .upnp_client import Upnp_client
 
 class Get_picture_list(Command):
     """
@@ -37,7 +37,7 @@ class Get_picture_list(Command):
         else:
             order_by = ""
         
-        upnp_client = Upnp_client.instance()
+        upnp_client = Upnp_client()
         answer = upnp_client.get_picture_overview(count, starting_index, filter_by, order_by)
         
         # create list from data

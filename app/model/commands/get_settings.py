@@ -2,9 +2,9 @@
 
 import requests
 import xml.etree.ElementTree as ET
-from model.commands.command import Command
-from model.commands.settings import Settings
-from model.commands.connection import Connection
+from .command import Command
+from .settings import Settings
+from .connection import Connection
 
 
 class Get_setting(Command):
@@ -22,13 +22,13 @@ class Get_setting(Command):
         if "setting_type" not in kwargs.keys():
             return False
         
-        connection = Connection.instance()
-        settings = Settings.instance()
+        connection = Connection()
+        settings = Settings()
 
         setting_type = kwargs["setting_type"]
 
         request_url = "http://%s:%d/cam.cgi?mode=getsetting&type=%s" %\
-                (connection.get_server_ip(), connection.get_http_port(), setting_type)
+                (connection.server_ip, connection.http_port, setting_type)
         answer = requests.get(request_url)
 
         try:

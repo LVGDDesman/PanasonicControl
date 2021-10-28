@@ -39,6 +39,7 @@ This is our first Mockup:
 TODO:
 - change upnp-library
 - tests with camera
+- create annotation for execute()
 - event loop
 - control
 - windows: 

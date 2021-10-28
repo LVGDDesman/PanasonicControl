@@ -7,7 +7,6 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Modules to test
-import model.commands as Commands
 
 from model.commands.connection import Connection
 from model.commands.upnp_client import Upnp_client
@@ -49,7 +48,7 @@ def mocked_requests_get(*args, **kwargs):
         return MockResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<camrply><result>ok</result></camrply>", 200)
     # Start Stream
     if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=startstream&value=' + \
-            str(Connection.instance().get_stream_port()):
+            str(Connection().stream_port):
         return MockResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<camrply><result>ok</result></camrply>", 200)
     # Stop Stream 
     if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=stopstream':
@@ -111,7 +110,7 @@ class Tests(unittest.TestCase):
         setting_name = "Test"
         setting_value = 100
         
-        settings = Settings.instance()
+        settings = Settings()
         settings.set_setting(setting_name, setting_value)
         response = settings.get_setting(setting_name)
 
@@ -120,7 +119,7 @@ class Tests(unittest.TestCase):
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_upnp_client(self, mock_get):
         # NOT WORKING
-        upnp_client = Upnp_client.instance() 
+        upnp_client = Upnp_client() 
         response = upnp_client.execute()
         self.assertEqual(response, True)
         return
@@ -152,7 +151,7 @@ class Tests(unittest.TestCase):
     
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_get_picture_list(self, mock_get):
-        Upnp_client.instance().initiate_registration()
+        Upnp_client().initiate_registration()
         response = Get_picture_list.execute(count=20)
 
         self.assertEqual(response, True)
@@ -178,8 +177,8 @@ class Tests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    connection = Connection.instance()
-    upnp_client = Upnp_client.instance()
+    connection = Connection()
+    upnp_client = Upnp_client()
     connection.initialize_g81_dmc()
     # -> important for Mocking maybe
     

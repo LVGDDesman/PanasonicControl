@@ -2,31 +2,29 @@
 
 import requests
 import xml.etree.ElementTree as ET
-from model.commands.command import Command
-from model.commands.connection import Connection
+from .command import Command
+from .connection import Connection
 
-class Stop_stream(Command):
+class Start_stream(Command):
     """
-    Object that represents the stop-stream request
+    Object, that represents the start-stream request
     """
     @staticmethod
     def execute(*args) -> bool:
         """
-        Execute the stop-stream request
+        Execute the start-strean request
         :return: True, if successful, False otherwise
         """
-        connection = Connection.instance()
+        connection = Connection()
 
-        requesturl = "http://%s:%d/cam.cgi?mode=stopstream" %\
-            (connection.get_server_ip(), connection.get_http_port())
-        answer = requests.get(requesturl)
+        request_url = "http://%s:%d/cam.cgi?mode=startstream&value=%s" %\
+            (connection.server_ip, connection.http_port, connection.stream_port )
+        answer = requests.get(request_url)
 
         try:
             root = ET.fromstring(answer.text)
-
             if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
                 return False
-
         except Exception as e:
             return False
         return True

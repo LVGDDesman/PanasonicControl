@@ -2,8 +2,8 @@
 
 import requests
 import xml.etree.ElementTree as ET
-from model.commands.command import Command
-from model.commands.connection import Connection
+from .command import Command
+from .connection import Connection
 
 class Set_setting(Command):
     """
@@ -21,12 +21,12 @@ class Set_setting(Command):
         if "setting_type" not in kwargs.keys() or "setting_value" not in kwargs.keys() :
             return False
 
-        connection = Connection.instance()
+        connection = Connection()
         setting_type = kwargs["setting_type"]
         setting_value = kwargs["setting_value"]
 
         request_url = "http://%s:%d/cam.cgi?mode=setsetting&type=%s&value=%s" %\
-                (connection.get_server_ip(), connection.get_http_port(), setting_type, setting_value)
+                (connection.server_ip, connection.http_port, setting_type, setting_value)
         answer = requests.get(request_url)
         try:
             root = ET.fromstring(answer.text)
@@ -35,6 +35,5 @@ class Set_setting(Command):
                 return False
             
         except Exception as e:
-            print(e)
             return False
         return True

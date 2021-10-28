@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import requests
-from model.commands.command import Command
-from model.commands.upnp_client import Upnp_client
-from model.commands.connection import Connection
+from .command import Command
+from .upnp_client import Upnp_client
+from .connection import Connection
 
 class Registration(Command):
     """
@@ -19,15 +19,15 @@ class Registration(Command):
         :return: True, if successful, False otherwise
         """
         
-        upnp_client = Upnp_client.instance()
-        connection = Connection.instance()
+        upnp_client = Upnp_client()
+        connection = Connection()
 
         if not upnp_client.initiate_registration():
             return False
         
         requesturl = "%s:%d/cam.cgi?mode=accctrl&&type=req_acc&value=%s&value2" %\
-            (connection.get_server_ip(), connection.get_http_port,\
-                    connection.get_uuid(), connection.get_client_name())
+            (connection.server_ip, connection.http_port,\
+                    connection.uuid, connection.client_name)
         
         answer = requests.get(requesturl)
         

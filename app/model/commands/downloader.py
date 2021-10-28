@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import requests
-from model.commands.command import Command
-from model.commands.connection import Connection
+from .command import Command
+from .connection import Connection
 
 class Downloader(Command):
     """
@@ -19,9 +19,9 @@ class Downloader(Command):
         if not "picture" in kwargs.keys() or not "folder" in kwargs.keys():
             return False
 
-        connection = Connection.instance()
+        connection = Connection()
 
-        requesturl = "http://%s:%d/%s" % (connection.get_server_ip(), connection.get_download_port(), kwargs["picture"])
+        requesturl = "http://%s:%d/%s" % (connection.server_ip, connection.download_port, kwargs["picture"])
         answer = requests.get(requesturl)
         
         if answer.status_code != 200:
