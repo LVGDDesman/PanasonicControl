@@ -34,3 +34,13 @@ Network.md has some more information about the commands sent to the camera.
 ---
 This is our first Mockup:
 <img src="./Mockup.svg"/>
+
+---
+TODO:
+- change upnp-library
+- tests with camera
+- event loop
+- control
+- windows: 
+    - registration
+    - main window

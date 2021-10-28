@@ -7,7 +7,7 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Modules to test
-import model
+import model.commands as Commands
 
 from model.commands.connection import Connection
 from model.commands.upnp_client import Upnp_client
@@ -120,9 +120,9 @@ class Tests(unittest.TestCase):
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_upnp_client(self, mock_get):
         # NOT WORKING
-        #upnp_client = Upnp_client.instance() 
-        #response = upnp_client.execute()
-        #self.assertEqual(response, True)
+        upnp_client = Upnp_client.instance() 
+        response = upnp_client.execute()
+        self.assertEqual(response, True)
         return
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
