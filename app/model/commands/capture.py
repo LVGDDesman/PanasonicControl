@@ -6,30 +6,30 @@ import requests
 import xml.etree.ElementTree as ET
 
 from .command import Command
+from .command import command_response
 from .connection import Connection
+
 
 class Capture(Command):
     """
     Object that represents the capture-request.
     """
+
     @staticmethod
-    def execute(*args) -> bool:
+    @command_response
+    def execute(*args, **kwargs):
         """
         Execute the capture request
         :return: True, if successful, False otherwise
         """
         connection = Connection()
-            
-        request_url = "http://%s:%d/cam.cgi?mode=camcmd&value=capture" %\
-                (connection.server_ip, connection.http_port)
+
+        request_url = "http://%s:%d/cam.cgi?mode=camcmd&value=capture" % \
+                      (connection.server_ip, connection.http_port)
         answer = requests.get(request_url)
 
-        try:
-            root = ET.fromstring(answer.text)
+        root = ET.fromstring(answer.text)
 
-            if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
-                return False
-            
-        except Exception as e:
+        if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
             return False
-        return True
+        return "lol"
