@@ -8,7 +8,7 @@ def command_response(func):
     """
     Decorator to wrap execute methods
     """
-
+    
     @wraps(func)
     def pack_into_response(*args, **kwargs) -> 'Response':
         """
@@ -35,6 +35,15 @@ class Command:
     """
     Inheritance Class for all executable commands
     """
+    
+    # raisable Errors:
+    err_not_successful = Exception("Camera: Execution not sucessful")
+    err_not_found = Exception("Camera: Not found") # probably not necessary
+    err_file = Exception("Client: Can\'t save picture")
+    err_param = ValueError("Client: Wrong Parameter")
+    err_unknown = Exception("Error in Execution")
+    # err_connection raised by request.get() -> ConnectionError("Connection not possible")
+
 
     @staticmethod
     @command_response

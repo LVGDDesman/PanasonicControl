@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Save a picture
-PICTURE="DL1000197.JPG"
+PICTURE=$1
 #"D01020394.jpg"
 #"P1000077.JPG"
 #"P1000496.JPG"

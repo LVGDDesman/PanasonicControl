@@ -2,7 +2,7 @@
 
 from .connection import Connection
 from model.design_pattern.singleton import Singleton
-import upnpy
+import upnpclient
 
 class Upnp_client(metaclass = Singleton):
     """
@@ -21,22 +21,22 @@ class Upnp_client(metaclass = Singleton):
         This function *has* to be called before other requests are send to the camera
         :return: True/False if camera was found
         """
-        upnp = upnpy.UPnP()
-        devices = upnp.discover()
+        devices = upnpclient.discover()
         for device in devices:
-            if device.get_friendly_name() == self._connection.get_server_name():
-            # This is currently for one camera, needs to be changed for different cameras
+            if device.friendly_name == self._connection.server_name:
+                #This is currently for one camera, needs to be changed for different cameras
                 self._camera = device
                 break
-
+            
         if self._camera == None:
             return False
         
-        uuid = self._camera.response.split("uuid:")[1].split(":")[0]
+        uuid = self._camera.udn.split("uuid:")[1]
         # ugly, but i don't know how to do it better
         # upnpy doesn't seem to directly support reading the response of the discovery-request
+        print(uuid)
         if uuid != None:
-            self._connection.set_uuid(uuid)
+            self._connection.uuid = uuid
             return True
         return False
 
@@ -49,9 +49,10 @@ class Upnp_client(metaclass = Singleton):
         :param order_by: <optional> order the result by [TODO]
         :return: True, if successful, False otherwise; the picturelist is passed on via events (TODO)
         """
-
+        print(self.camera)
+        print("OKOKO")
         answer = self._camera.ContentDirectory.Browse(
-                ObjectID=0, # not necessary right
+                ObjectID=1, # not necessary right
                 BrowseFlag='BrowseDirectChildren',
                 Filter=filter_by,
                 StartingIndex=starting_index,

@@ -3,6 +3,7 @@
 import requests
 import xml.etree.ElementTree as ET
 from .command import Command
+from .command import command_response
 from .connection import Connection
 
 class Stop_stream(Command):
@@ -10,6 +11,7 @@ class Stop_stream(Command):
     Object that represents the stop-stream request
     """
     @staticmethod
+    @command_response
     def execute(*args) -> bool:
         """
         Execute the stop-stream request
@@ -23,10 +25,10 @@ class Stop_stream(Command):
 
         try:
             root = ET.fromstring(answer.text)
-
-            if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
-                return False
-
         except Exception as e:
-            return False
-        return True
+             raise Command.err_not_successful
+        
+        if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
+            raise Command.err_not_successful
+        
+        return None

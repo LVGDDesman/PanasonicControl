@@ -1,7 +1,6 @@
 #!/usr/bin/python
 from typing import List
 
-
 class Response:
     """
     object storing the response-information.

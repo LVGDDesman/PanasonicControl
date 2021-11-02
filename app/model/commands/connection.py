@@ -7,15 +7,15 @@ class Connection(metaclass = Singleton):
     Storage for all connection information
     """
     def __init__(self):
-        self._client_ip = ""#client_ip
-        self._server_ip = ""#server_ip
-        self._upnp_port = 1#upnp_port
-        self._download_port = 1#download_port
-        self._stream_port = 1#stream_port
-        self._http_port = 1#http_port
-        self._uuid = ""#uuid
-        self._server_name = ""#server_name
-        self._client_name = ""#client_name
+        self._client_ip = None 
+        self._server_ip = None
+        self._upnp_port = None
+        self._download_port = None
+        self._stream_port = None
+        self._http_port = None 
+        self._uuid = None 
+        self._server_name = None 
+        self._client_name = None 
 
     def initialize_g81_dmc(self):
         """

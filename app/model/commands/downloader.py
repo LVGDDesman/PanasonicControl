@@ -2,13 +2,16 @@
 
 import requests
 from .command import Command
+from .command import command_response
 from .connection import Connection
 
 class Downloader(Command):
     """
     Object for downloading pictures
     """
+    
     @staticmethod
+    @command_response
     def execute(*args, **kwargs) -> bool:
         """
         Execute the download request 
@@ -17,7 +20,7 @@ class Downloader(Command):
         :return: True, if successful, False otherwise
         """
         if not "picture" in kwargs.keys() or not "folder" in kwargs.keys():
-            return False
+            raise Command.err_param
 
         connection = Connection()
 
@@ -25,15 +28,15 @@ class Downloader(Command):
         answer = requests.get(requesturl)
         
         if answer.status_code != 200:
-            return False
+            raise Command.err_not_successful
 
         try:
             # TODO proper os path generation necessary
             path = kwargs["folder"] + kwargs["picture"]
 
-            with open(path, "wb+") as file:
+            with open(path, "wb") as file:
                 file.write(answer.content)
         except Exception as e:
-            return False
+            raise Command.err_file
 
-        return True
+        return None

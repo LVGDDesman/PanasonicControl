@@ -4,12 +4,12 @@ from unittest import mock
 import os
 import sys
 
-from model.commands.response import Response
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Modules to test
 
+from model.commands.response import Response
 from model.commands.connection import Connection
 from model.commands.upnp_client import Upnp_client
 from model.commands.settings import Settings
@@ -125,57 +125,56 @@ class Tests(unittest.TestCase):
         # NOT WORKING
         upnp_client = Upnp_client()
         response = upnp_client.execute()
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
         return
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_capture(self, mock_get):
         response = Capture.execute()
-
         self.assertEqual(True, response.successful)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_start_stream(self, mock_get):
         response = Start_stream.execute()
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_stop_stream(self, mock_get):
         response = Stop_stream.execute()
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_downloader(self, mock_get):
         response = Downloader.execute(picture="TEST.jpg", folder=".output/")
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_get_picture_list(self, mock_get):
         Upnp_client().initiate_registration()
         response = Get_picture_list.execute(count=20)
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_get_setting(self, mock_get):
         response = Get_setting.execute(setting_type="shtrspeed")
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_registration(self, mock_get):
         response = Registration.execute()
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
         return
 
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_set_setting(self, mock_get):
         response = Set_setting.execute(setting_type="shtrspeed", setting_value="2390/256")
 
-        self.assertEqual(response, True)
+        self.assertEqual(response.successful, True)
 
 
 if __name__ == "__main__":

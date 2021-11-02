@@ -31,5 +31,5 @@ class Capture(Command):
         root = ET.fromstring(answer.text)
 
         if len(root.findall("result")) == 0 or root.findall("result")[0].text != "ok":
-            return False
-        return "lol"
+            raise Command.err_not_successful
+        return None

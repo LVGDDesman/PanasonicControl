@@ -2,14 +2,18 @@
 
 import requests
 from .command import Command
+from .command import command_response
 from .upnp_client import Upnp_client
 from .connection import Connection
+from .set_settings import Set_setting
+from .get_settings import Get_setting
 
 class Registration(Command):
     """
     Object for registering the client on the camera
     """
     @staticmethod
+    @command_response
     def execute(*args) -> bool:
         """
         Executing the registration.
@@ -23,19 +27,21 @@ class Registration(Command):
         connection = Connection()
 
         if not upnp_client.initiate_registration():
-            return False
+            raise Command.err_not_successful
         
-        requesturl = "%s:%d/cam.cgi?mode=accctrl&&type=req_acc&value=%s&value2" %\
+        request_url = "http://%s:%d/cam.cgi?mode=accctrl&type=req_acc&value=%s&value2=%s" %\
             (connection.server_ip, connection.http_port,\
                     connection.uuid, connection.client_name)
         
-        answer = requests.get(requesturl)
+        answer = requests.get(request_url)
+        if not "ok" in answer.text:
+            raise Command.err_not_successful
         
-        if not "ok" in answer:
-            return False
+        Set_setting.execute(setting_type = "device_name", value = connection.client_ip)
+        Get_setting.execute(setting_type = "pa")
         
         # parse / evaluate answer maybe? 
         # -> remote and encrypted might be important
         # but which part is encrypted?
         # Example: ok,G81-69497D,remote,encrypted
-        return True
+        return None
