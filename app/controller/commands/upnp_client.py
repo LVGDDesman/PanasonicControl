@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from .connection import Connection
+from model.structures.connection import Connection as Connection
 from model.design_pattern.singleton import Singleton
 import upnpclient
 
@@ -34,7 +34,6 @@ class Upnp_client(metaclass = Singleton):
         uuid = self._camera.udn.split("uuid:")[1]
         # ugly, but i don't know how to do it better
         # upnpy doesn't seem to directly support reading the response of the discovery-request
-        print(uuid)
         if uuid != None:
             self._connection.uuid = uuid
             return True
@@ -49,8 +48,6 @@ class Upnp_client(metaclass = Singleton):
         :param order_by: <optional> order the result by [TODO]
         :return: True, if successful, False otherwise; the picturelist is passed on via events (TODO)
         """
-        print(self.camera)
-        print("OKOKO")
         answer = self._camera.ContentDirectory.Browse(
                 ObjectID=1, # not necessary right
                 BrowseFlag='BrowseDirectChildren',

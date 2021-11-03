@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from functools import wraps
 
-from .response import Response
+from model.structures.response import Response
 
 
 def command_response(func):

@@ -1,32 +1,29 @@
-import unittest
-from unittest import mock
+client_ip = "192.168.54.10"
+server_ip = "192.168.54.1"
+upnp_port = 60606
+download_port = 50001
+stream_port = 49152
+http_port = 80
+uuid = ""
+server_name = "G81-69497D"
+client_name = "DMC-Control"
 
-import os
-import sys
-
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Modules to test
-
-from model.commands.response import Response
-from model.commands.connection import Connection
-from model.commands.upnp_client import Upnp_client
-from model.commands.settings import Settings
-from model.commands.command import Command
-
-from model.commands.capture import Capture
-from model.commands.registration import Registration
-from model.commands.downloader import Downloader
-from model.commands.get_picturelist import Get_picture_list
-from model.commands.get_settings import Get_setting
-from model.commands.set_settings import Set_setting
-from model.commands.start_stream import Start_stream
-from model.commands.stop_stream import Stop_stream
-
-
-def mocked_requests_get(*args, **kwargs):
-    uuid = "XXXXXX-XXX"
+def initialize_g81_dmc_test(connection):
+    """
+    Initialize object for the camera G81 DMC
+    -> a more general approach is useful
+    """
+    connection.client_ip = client_ip
+    connection.server_ip = server_ip
+    connection.upnp_port = upnp_port
+    connection.download_port = download_port
+    connection.stream_port = stream_port
+    connection.http_port = http_port
+    connection.uuid = uuid
+    connection.server_name = server_name
+    connection.client_name = client_name
+        
+def mocked_requests_get( *args, **kwargs):
 
     getsetting = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" \
                  "<camrply><result>ok</result><settingvalue {}=\"{}\"></settingvalue></camrply>"
@@ -42,14 +39,12 @@ def mocked_requests_get(*args, **kwargs):
 
         def content(self):
             return self.content
-
     # Ready:
     ## Capture 
     if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=camcmd&value=capture':
         return MockResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<camrply><result>ok</result></camrply>", 200)
     # Start Stream
-    if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=startstream&value=' + \
-            str(Connection().stream_port):
+    if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=startstream&value=' + str(stream_port):
         return MockResponse("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<camrply><result>ok</result></camrply>", 200)
     # Stop Stream 
     if args[0] == 'http://192.168.54.1:80/cam.cgi?mode=stopstream':
@@ -95,87 +90,6 @@ def mocked_requests_get(*args, **kwargs):
         return MockResponse(getsetting.format("shtrspeed", "1"), 200)  # NOT RIGHT
     elif args[0] == 'http://192.168.54.1:80/cam.cgi?mode=getsetting&type=whitebalance':
         return MockResponse(getsetting.format("whitebalane", "auto"), 200)
-    print(args[0])
+    
+    print("ERROR unknown request URL: " + args[0])
     return MockResponse("", 404)
-
-
-class Tests(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        Connection().initialize_g81_dmc()
-
-    def test_commmand(self):
-        response: 'Response' = Command().execute()
-        self.assertEqual(False, response.successful)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_settings(self, mock_get):
-        setting_name = "Test"
-        setting_value = 100
-
-        settings = Settings()
-        settings.set_setting(setting_name, setting_value)
-        response = settings.get_setting(setting_name)
-
-        self.assertEqual(setting_value, response)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_upnp_client(self, mock_get):
-        # NOT WORKING
-        upnp_client = Upnp_client()
-        response = upnp_client.execute()
-        self.assertEqual(response.successful, True)
-        return
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_capture(self, mock_get):
-        response = Capture.execute()
-        self.assertEqual(True, response.successful)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_start_stream(self, mock_get):
-        response = Start_stream.execute()
-
-        self.assertEqual(response.successful, True)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_stop_stream(self, mock_get):
-        response = Stop_stream.execute()
-
-        self.assertEqual(response.successful, True)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_downloader(self, mock_get):
-        response = Downloader.execute(picture="TEST.jpg", folder=".output/")
-
-        self.assertEqual(response.successful, True)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_get_picture_list(self, mock_get):
-        Upnp_client().initiate_registration()
-        response = Get_picture_list.execute(count=20)
-
-        self.assertEqual(response.successful, True)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_get_setting(self, mock_get):
-        response = Get_setting.execute(setting_type="shtrspeed")
-
-        self.assertEqual(response.successful, True)
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_registration(self, mock_get):
-        response = Registration.execute()
-        self.assertEqual(response.successful, True)
-        return
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_set_setting(self, mock_get):
-        response = Set_setting.execute(setting_type="shtrspeed", setting_value="2390/256")
-
-        self.assertEqual(response.successful, True)
-
-
-if __name__ == "__main__":
-    unittest.main()

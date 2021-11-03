@@ -28,7 +28,7 @@ class Get_picture_list(Command):
         if "starting_index" in kwargs.keys():
             starting_index = kwargs["starting_index"]
         else:
-            starting_index = 0  # TODO: check if 0 is first element
+            starting_index = 0
         
         if "filter_by" in kwargs.keys():
             filter_by = kwargs["filter_by"]

@@ -4,9 +4,8 @@ import requests
 import xml.etree.ElementTree as ET
 from .command import Command
 from .command import command_response
-from .settings import Settings
-from .connection import Connection
-
+from model.structures.connection import Connection as Connection
+from model.structures.settings import Settings as Settings
 
 class Get_setting(Command):
     """

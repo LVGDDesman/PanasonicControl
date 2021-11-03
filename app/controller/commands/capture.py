@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 from .command import Command
 from .command import command_response
-from .connection import Connection
+from model.structures.connection import Connection as Connection
 
 
 class Capture(Command):

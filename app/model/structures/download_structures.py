@@ -74,7 +74,7 @@ class Picture_store(metaclass = Singleton):
     This object represents the overview over all pictures and their information.
     """
 
-    def __init__(self, entry_count:int = 0, pictures = None):
+    def __init__(self, entry_count:int = 0, pictures = []):
             self._entry_count = entry_count 
             self._picture_list = pictures
 
@@ -106,14 +106,15 @@ class Picture_store(metaclass = Singleton):
         :param offset: location of the segment in the whole 
         """
         
-        if len(self._picturelist) < offset:
+        if len(self._picture_list) < offset:
             raise Exception("Initialize previous Segment first!")
         
-        for i in len(segment):
+        for i in range(len(segment)):
+            
             if offset + i >= self._entry_count:
                 self._picture_list.append(segment[i])
             else:
-                self._picture_list[offset + i] = segment[i]
+                self._picture_list[offset + i ] = segment[i]
 
     @property
     def picture_list(self):

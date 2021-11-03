@@ -1,3 +1,5 @@
+# These tests where used to check actual compatibility with the physical camera
+
 import unittest
 from unittest import mock
 
