@@ -16,27 +16,16 @@ class MainWindow(Window, metaclass=Singleton):
 
     def __init__(self):
         super().__init__(self._CURRENT_WINDOW_NAME, self._WIDTH, self._HEIGHT)
+        self._window = None
 
-    def create_window(self):
-        root = Tk()
-        root.title(self._APPLICATION_NAME + " " + self._VERSION)
-        root.geometry(str(self._WIDTH) + "x" + str(self._HEIGHT))
-        root.minsize(self._min_width, self._min_height)
-        return root
-
-    def create_status_bar(self, root):
-        status_bar = Frame(root, bd=1, relief=SUNKEN)
-        
-        camera_model = Label(status_bar, text="G81 DMC")
-        camera_model.pack(side=LEFT, pady=10)
-        
-        
-        execution_mode = Label(status_bar, text="EXECUTING")
-        execution_mode.place(relx=.5, rely=.5, anchor="center")
-
-        status = Label(status_bar, text="disconnected")
-        status.pack(side=RIGHT, pady=10)
-
-        status_bar.pack(side=TOP, fill=X)
-        
-        return
+    @property
+    def window(self):
+        # If we already have created a main window return that
+        if self._window is not None:
+            return self._window
+        # Create main top level window
+        self._window = Tk()
+        self._window.title(self._APPLICATION_NAME + " " + self._VERSION)
+        self._window.geometry(str(self._WIDTH) + "x" + str(self._HEIGHT))
+        self._window.minsize(self._min_width, self._min_height)
+        return self._window

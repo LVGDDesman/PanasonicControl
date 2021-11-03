@@ -10,3 +10,11 @@ class Window:
         self._height = height
         self._min_width = min_width
         self._min_height = min_height
+
+    @property
+    def width(self):
+        return self._width
+
+    @property
+    def height(self):
+        return self._height
