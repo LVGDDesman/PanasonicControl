@@ -1,1 +1,1 @@
-from .Singleton import Singleton
+from .singleton import Singleton
