@@ -4,7 +4,7 @@ from view.window.controller import MainWindow
 from view.window.controller.Widgets.Widget import Widget
 from view.window.controller.WindowControlls import _show_exec_view
 from view.utils.table import create_table
-from model.design_pattern.Singleton import Singleton
+from model.design_pattern import Singleton
 
 
 class LoginWidget(Widget, metaclass=Singleton):

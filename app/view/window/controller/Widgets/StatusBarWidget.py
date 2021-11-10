@@ -1,6 +1,6 @@
 from tkinter import Frame, SUNKEN, Label, LEFT, RIGHT, TOP, X
 
-from model.design_pattern.Singleton import Singleton
+from model.design_pattern import Singleton
 from view.window.controller.Widgets.Widget import Widget
 
 
