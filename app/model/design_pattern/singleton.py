@@ -1,4 +1,3 @@
-
 class Singleton(type):
     """
     Metaclass to tell other classes to be built as singleton objects.
